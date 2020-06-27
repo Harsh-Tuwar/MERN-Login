@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require("body-parser");
 const connectToDB = require('./config/db');
 const passport = require('passport');
+const path = require('path');
 
 const users = require('./routes/api/users');
 
@@ -31,6 +32,7 @@ require('./config/passport')(passport);
 // routes
 app.use('/api/users', users);
 
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == "production") {
   app.use(express.static('client/build'));
 
